@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
-project(libosmio)
+project(osmio)
 
-set(CMAKE_CXX_STANDARD 20)
+file(GLOB_RECURSE LIBOSMIO_HEADERS ${CMAKE_SOURCE_DIR}/src/public/*.h)
 
-file(GLOB_RECURSE HEADER ${CMAKE_SOURCE_DIR}/src/*.h)
-
-add_library(libosmio ${HEADER} library.h library.cpp)
+add_library(osmio ${LIBOSMIO_HEADERS})
+set_target_properties(osmio PROPERTIES LINKER_LANGUAGE C)
